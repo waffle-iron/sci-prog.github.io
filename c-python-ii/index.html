@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+ <html><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><link rel="preload" href="/component---src-layouts-index-js-a0542ab850b998708885.js" as="script"/><link rel="preload" href="/component---src-templates-blog-post-js-044546551087b9ff5f9a.js" as="script"/><link rel="preload" href="/path---c-python-ii-a74720a1ee09b6d17045.js" as="script"/><link rel="preload" href="/app-8403f053bf0346b5fa29.js" as="script"/><link rel="preload" href="/commons-069d9144a02465e83941.js" as="script"/><script id="webpack-manifest">
+            //<![CDATA[
+            window.webpackManifest = {"231608221292675":"app-8403f053bf0346b5fa29.js","99219681209289":"component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js","107818501498521":"component---src-templates-blog-post-js-044546551087b9ff5f9a.js","35783957827783":"component---src-pages-index-js-1a7f275830b0a5cbec32.js","60335399758886":"path----557518bd178906f8d58a.js","210333531512890":"path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js","1738975126400":"path---c-python-i-cd4ef76f55830f5613fc.js","249796781907502":"path---c-python-ii-a74720a1ee09b6d17045.js","28935089329581":"path---c-python-iii-707e9354ba20fb718440.js","263240134119636":"path---contributor-guide-17c87463450eec8d3d41.js","142629428675168":"path---index-e24cdd84e31351c1fbea.js","114276838955818":"component---src-layouts-index-js-a0542ab850b998708885.js"}
+            //]]>
+            </script><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><title data-react-helmet="true">Interacción entre C y Python: Parte II - ctypes | Scientific Programming Blog</title><style id="typography.js">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:125%/1.45em 'Quattrocento Sans',serif;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.8);font-family:'Quattrocento Sans',serif;font-weight:400;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern", "liga", "clig", "calt";-ms-font-feature-settings:"kern", "liga", "clig", "calt";-webkit-font-feature-settings:"kern", "liga", "clig", "calt";font-feature-settings:"kern", "liga", "clig", "calt";}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;color:hsla(0,0%,0%,0.9);font-family:'Work Sans',sans-serif;font-weight:600;text-rendering:optimizeLegibility;font-size:2rem;line-height:1.1;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;color:hsla(0,0%,0%,0.9);font-family:'Work Sans',sans-serif;font-weight:600;text-rendering:optimizeLegibility;font-size:1.51572rem;line-height:1.1;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;color:hsla(0,0%,0%,0.9);font-family:'Work Sans',sans-serif;font-weight:600;text-rendering:optimizeLegibility;font-size:1.31951rem;line-height:1.1;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;color:hsla(0,0%,0%,0.9);font-family:'Work Sans',sans-serif;font-weight:600;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.1;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;color:hsla(0,0%,0%,0.9);font-family:'Work Sans',sans-serif;font-weight:600;text-rendering:optimizeLegibility;font-size:0.87055rem;line-height:1.1;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;color:hsla(0,0%,0%,0.9);font-family:'Work Sans',sans-serif;font-weight:600;text-rendering:optimizeLegibility;font-size:0.81225rem;line-height:1.1;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}ul{margin-left:1.45rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.45rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;font-size:0.85rem;line-height:1.45rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;font-size:1rem;line-height:1.45rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}blockquote{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0.90625rem;padding-right:0;padding-top:0;margin-bottom:1.45rem;font-size:1.1487rem;line-height:1.45rem;border-left:0.54375rem solid #1ca086;color:hsla(0,0%,0%,0.65);font-style:italic;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.45rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.45rem;}b{font-weight:700;}strong{font-weight:700;}dt{font-weight:700;}th{font-weight:700;}li{margin-bottom:calc(1.45rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.45rem;margin-bottom:calc(1.45rem / 2);margin-top:calc(1.45rem / 2);}li > ul{margin-left:1.45rem;margin-bottom:calc(1.45rem / 2);margin-top:calc(1.45rem / 2);}blockquote *:last-child{margin-bottom:0;}li *:last-child{margin-bottom:0;}p *:last-child{margin-bottom:0;}li > p{margin-bottom:calc(1.45rem / 2);}code{font-size:0.85rem;line-height:1.45rem;}kbd{font-size:0.85rem;line-height:1.45rem;}samp{font-size:0.85rem;line-height:1.45rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:0.96667rem;padding-right:0.96667rem;padding-top:0.725rem;padding-bottom:calc(0.725rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}a{color:#1ca086;text-decoration:none;text-shadow:.03em 0 #fff,-.03em 0 #fff,0 .03em #fff,0 -.03em #fff,.06em 0 #fff,-.06em 0 #fff,.09em 0 #fff,-.09em 0 #fff,.12em 0 #fff,-.12em 0 #fff,.15em 0 #fff,-.15em 0 #fff;background-image:linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 1px, #1ca086 1px, #1ca086 2px, rgba(0, 0, 0, 0) 2px);}a:hover,a:active{text-shadow:none;background-image:none;}h1,h2,h3,h4,h5,h6{margin-top:2.175rem;margin-bottom:0.725rem;}blockquote > :last-child{margin-bottom:0;}blockquote cite{font-size:1rem;line-height:1.45rem;color:hsla(0,0%,0%,0.8);font-style:normal;font-weight:400;}blockquote cite:before{content:"— ";}@media only screen and (max-width:480px){html{font-size:106.25%;line-height:1.45em;}blockquote{border-left:0.27187rem solid #1ca086;color:hsla(0,0%,0%,0.59);padding-left:0.81563rem;font-style:italic;margin-left:-1.0875rem;margin-right:0;}}</style><link href="//fonts.googleapis.com/css?family=Work+Sans:600|Quattrocento+Sans:400,400i,700" rel="stylesheet" type="text/css"/><script>
+  !function(e,t,r){function n(){for(;d[0]&&"loaded"==d[0][f];)c=d.shift(),c[o]=!i.parentNode.insertBefore(c,i)}for(var s,a,c,d=[],i=e.scripts[0],o="onreadystatechange",f="readyState";s=r.shift();)a=e.createElement(t),"async"in i?(a.async=!1,e.head.appendChild(a)):i[f]?(d.push(a),a[o]=n):e.write("<"+t+' src="'+s+'" defer></'+t+">"),a.src=s}(document,"script",[
+  "/commons-069d9144a02465e83941.js","/app-8403f053bf0346b5fa29.js","/path---c-python-ii-a74720a1ee09b6d17045.js","/component---src-templates-blog-post-js-044546551087b9ff5f9a.js","/component---src-layouts-index-js-a0542ab850b998708885.js"
+])
+  </script><style id="gatsby-inlined-css">code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style></head><body><div id="___gatsby"><div style="max-width:34.8rem;margin-left:auto;margin-right:auto;padding:2.175rem 1.0875rem;" data-reactroot="" data-reactid="1" data-react-checksum="1616665161"><h3 style="font-family:Montserrat, sans-serif;margin-top:0;margin-bottom:-1.45rem;" data-reactid="2"><a style="box-shadow:none;text-decoration:none;color:inherit;" href="/" data-reactid="3">Scientific Programming Blog</a></h3><div data-reactid="4"><!-- react-empty: 5 --><h1 data-reactid="6">Interacción entre C y Python: Parte II - ctypes</h1><p style="font-size:0.87055rem;line-height:1.45rem;display:block;margin-bottom:0.725rem;margin-top:0.725rem;" data-reactid="7">November 19, 2017</p><div data-reactid="8"><p>Discutimos <a href="/c-python-i/">previamente</a> acerca de la validez de <a href="https://docs.python.org/2/library/ctypes.html">ctypes</a> para acelerar código de Python.
+Vale mencionar que, a decir verdad, no estamos acelerando el código en Python: llamamos, desde Python, a un código en C que es más rápido.
+Esta diferencia que parece casi trivial es fundamental para comprender este enfoque.
+¿Qué tenemos que hacer siempre que queremos ejecutar código ya escrito?
+<em>Linkeamos</em> a una librería.
+Eso es lo que vamos a hacer en este caso: en vez de ejecutar una rutina en Python, vamos a darle ese trabajo a una librería de C.
+Recordemos que hay dos tipos distintos de librerías: estáticas y dinámicas.
+Para poder ejecutar una librería desde Python es evidente que vamos a necesitar que ésta sea dinámica, ya que las llamadas a funciones van a tener que ser resueltas en tiempo de ejecución (recordemos que Python no se compila, por lo que no hay “tiempo de compilación”).</p>
+<p>Construimos una librería muy pequeña que hace algunas operaciones matemáticas en escalares y vectores, separadas en dos archivos llamados <code>add_two.c</code> y <code>arrays.c</code>.</p>
+<h2>Scalars</h2>
+<div class="gatsby-highlight">
+      <pre class="language-c"><code><span class="token comment" spellcheck="true">/* file: add_two.c */</span>
+
+<span class="token keyword">float</span> <span class="token function">add_float</span><span class="token punctuation">(</span><span class="token keyword">float</span> a<span class="token punctuation">,</span> <span class="token keyword">float</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">add_int</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">add_float_ref</span><span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token operator">*</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token operator">*</span>a <span class="token operator">+</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">add_int_ref</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token operator">*</span>a <span class="token operator">+</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+      </div>
+<h2>Arrays</h2>
+<div class="gatsby-highlight">
+      <pre class="language-c"><code><span class="token comment" spellcheck="true">/* file: arrays.c */</span>
+
+<span class="token keyword">int</span> <span class="token function">add_int_array</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>c<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    c<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">float</span> <span class="token function">dot_product</span><span class="token punctuation">(</span><span class="token keyword">float</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">float</span> <span class="token operator">*</span>b<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">float</span> res<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+  res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res <span class="token operator">=</span> res <span class="token operator">+</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+      </div>
+<p>Construimos la librería dinámica con</p>
+<div class="gatsby-highlight">
+      <pre class="language-none"><code>$ gcc -c -fPIC arrays.c
+$ gcc -c -fPIC add_two.c
+$ gcc -shared arrays.o add_two.o -o libmymath.so </code></pre>
+      </div>
+<p>Y chequeamos que la librería efectivamente tenga todos los símbolos definidos</p>
+<div class="gatsby-highlight">
+      <pre class="language-none"><code>$ nm -n libmymath.so
+...
+0000000000000730 T add_float_array
+00000000000008a0 T dot_product
+00000000000008d0 T add_float
+00000000000008e0 T add_int
+00000000000008f0 T add_float_ref
+0000000000000900 T add_int_ref
+...</code></pre>
+      </div>
+<h2>Trabajando con escalares</h2>
+<h3>Enteros</h3>
+<p>Con la librería dinámica ya compilada, ahora la comunicamos con Python.
+Ésa es la tarea de ctypes.
+La librería ctypes es simplemente la definición de los tipos usuales de C (<code>int</code>, <code>float</code>, <code>double</code>…) y un <em>loader</em> dinámico de liberías.
+¿Cómo usamos estas funciones en Python, entonces?
+Tomemos, por ejemplo, <code>add_int</code>.
+Sólo neecesitamos cargar con ctypes la librería que compilamos y llamamos a la función:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> ctypes <span class="token keyword">as</span> C
+<span class="token operator">>></span><span class="token operator">></span> math <span class="token operator">=</span> C<span class="token punctuation">.</span>CDLL<span class="token punctuation">(</span><span class="token string">'./libmymath.so'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_int<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token number">7</span>
+</code></pre>
+      </div>
+<p>Y listo!
+Logramos la titánica tarea de sumar dos enteros.</p>
+<h3>Punto flotante</h3>
+<p>¿Qué pasa si tratamos de sumar dos números de punto flotante?</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token number">0</span>
+</code></pre>
+      </div>
+<p>¿Qué pasó aquí?
+La función de la libreríá interpreta las entradas como <code>float</code>, pero nunca le dijimos a Python que estamos pasándole números en punto flotante.
+Una solución ingenua sería tratar de pasar simplemente <code>3.0</code> y <code>4.0</code> como parámetros, pero falla catastróficamente:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">,</span> <span class="token number">4.0</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+ctypes<span class="token punctuation">.</span>ArgumentError<span class="token punctuation">:</span> argument <span class="token number">1</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span>type <span class="token string">'exceptions.TypeError'</span><span class="token operator">></span><span class="token punctuation">:</span> Don't know how to convert parameter <span class="token number">1</span>
+</code></pre>
+      </div>
+<p>Claramente no podemos pasar cualquier parámetro bajo la confianza de que Python puede resolverlo.
+Recordemos que estamos llamando a una función de C, así que toda la magia del <em>duck typing</em> de Python no nos puede ayudar.
+Tenemos que, explícitamente, decir que estamos pasando <code>float</code> de C.
+Es decir, tenemos uqe usar los tipos definidos en <code>ctypes</code>:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">(</span>C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token number">4.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2</span>
+</code></pre>
+      </div>
+<p>Estamos cerca.
+Lo único que falta es que necesitamos que Python interprete el resultado como un <code>float</code> (¿cómo sabría Python qué tipo devuelve efectivamente la función?).</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">.</span>restype <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">(</span>C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token number">3.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token number">4.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">7.0</span>
+</code></pre>
+      </div>
+<p>Escribir <code>C.c_float</code> cada vez que queremos ejecutar esta función no parece ser la solución más limpia de todas.
+Hay de hecho una forma mucho mejor para que Python sepa que la función van a tomar siempre <code>C.c_float</code> como argumentos, a través del método <code>argtypes</code>:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">.</span>restype <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">.</span>argtypes <span class="token operator">=</span> <span class="token punctuation">[</span>C<span class="token punctuation">.</span>c_float<span class="token punctuation">,</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_float<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token number">7.0</span>
+</code></pre>
+      </div>
+<p>Y ahora la función puede ser llamada de forma completamente transparente, como llamaríamos a cualquier otra función de Python, pero en el fondo ejecuta código de C.</p>
+<h3>Por referencia</h3>
+<p>Cuando pasamos los argumentos por referencia (aunque puede ser una forma rara para implementarla en escalares, al menos al principio), la notación es mucho más engorrosa, ya que necesitamos pasar una posición de memoria.
+Podemos pedir la posición de memoria de una variable con la función <code>byref</code>:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> three <span class="token operator">=</span> C<span class="token punctuation">.</span>c_int<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> four <span class="token operator">=</span> C<span class="token punctuation">.</span>c_int<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> res <span class="token operator">=</span> C<span class="token punctuation">.</span>c_int<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_int_ref<span class="token punctuation">(</span>C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>four<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0</span>
+<span class="token operator">>></span><span class="token operator">></span> res<span class="token punctuation">.</span>value
+<span class="token number">7</span>
+</code></pre>
+      </div>
+<p>Hay, sin embargo, una ventaja: como los argumentos son siempre posiciones de memoria (y, en consecuencia, <em>enteros</em><sup id="fnref-1"><a href="#fn-1" class="footnote-ref">1</a></sup>), funciona inmediatamente para cualquier tipo de variable:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> three <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> four <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> res <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_int_ref<span class="token punctuation">(</span>C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>three<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>four<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">0</span>
+<span class="token operator">>></span><span class="token operator">></span> res<span class="token punctuation">.</span>value
+<span class="token number">7.0</span>
+</code></pre>
+      </div>
+<p>Ahora la notación no se puede limpiar fácilmente como en el caso anterior, pero podemos escribir un <em>wrapper</em> de la función</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token keyword">def</span> <span class="token function">add_int_ref_python</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  a_c <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+  b_c <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+  res_c <span class="token operator">=</span> C<span class="token punctuation">.</span>c_float<span class="token punctuation">(</span><span class="token punctuation">)</span>
+  math<span class="token punctuation">.</span>add_int_ref<span class="token punctuation">(</span>C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>a_c<span class="token punctuation">)</span><span class="token punctuation">,</span> C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>b_c<span class="token punctuation">)</span><span class="token punctuation">,</span> C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>res_c<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> res<span class="token punctuation">.</span>value
+</code></pre>
+      </div>
+<p>Y ahí tenemos una llamada a C que suma por referencia y completamente transparente para el usuario final.</p>
+<h2>Arrays</h2>
+<p>Con la experiencia de manejar argumentos por referencia en llamadas a funciones de C para escalares, manejar <em>arrays</em> no puede ser particularmente difícil: es simplemente una variable por referencia apuntando al primere elemento del <em>array</em>.
+Es, en general, buena práctica manejar la memoria en Python, pero esto lleva a la siguiente pregunta: ¿cómo alocamos memoria en Python?
+La forma más inmediata es:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> in1 <span class="token operator">=</span> <span class="token punctuation">(</span>C<span class="token punctuation">.</span>c_int <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> in2 <span class="token operator">=</span> <span class="token punctuation">(</span>C<span class="token punctuation">.</span>c_int <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> out <span class="token operator">=</span> <span class="token punctuation">(</span>C<span class="token punctuation">.</span>c_int <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_int_ref<span class="token punctuation">(</span>C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>in1<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>in2<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>byref<span class="token punctuation">(</span>out<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>c_int<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> out<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> out<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> out<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+      </div>
+<h3>Numpy Arrays</h3>
+<p>Hay un enfoque distinto.
+Ya tenemos todo un ecosistema desarrollado para trabajar con arrays: NumPy.
+Un array de Numpy es un montón de metadatos (como tamaño, forma, tipo) y un puntero a la primera posición en memoria.
+Podemos acceder a esa posición de memoria de un NumPy array a través de <code>data_as</code> o <code>data</code> en el array:</p>
+<div class="gatsby-highlight">
+      <pre class="language-python"><code><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token operator">>></span><span class="token operator">></span> intp <span class="token operator">=</span> C<span class="token punctuation">.</span>POINTER<span class="token punctuation">(</span>C<span class="token punctuation">.</span>c_int<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> in1 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>C<span class="token punctuation">.</span>c_int<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> in2 <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>C<span class="token punctuation">.</span>c_int<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> out <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>C<span class="token punctuation">.</span>c_int<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> math<span class="token punctuation">.</span>add_int_ref<span class="token punctuation">(</span>in1<span class="token punctuation">.</span>ctypes<span class="token punctuation">.</span>data_as<span class="token punctuation">(</span>intp<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     in2<span class="token punctuation">.</span>ctypes<span class="token punctuation">.</span>data_as<span class="token punctuation">(</span>intp<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     out<span class="token punctuation">.</span>ctypes<span class="token punctuation">.</span>data_as<span class="token punctuation">(</span>intp<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                     C<span class="token punctuation">.</span>c_int<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> out
+array<span class="token punctuation">(</span><span class="token punctuation">[</span> <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>int32<span class="token punctuation">)</span>
+</code></pre>
+      </div>
+<p>Dos cosas son importantes aquí: a) no necesitamos definir el tipo como puntero a entero, podemos usar directamente el tipo <code>c_void_p</code> de ctypes; b) la salida es un array de NumPy que podemos usar inmediatamente en cualquier función de numpy.
+Podemos, al igual que ne el caso anterior, crear un <em>wrapper</em> para esta función para usarlo transparentemente como si fuera una función de Python.</p>
+<h2>Conclusiones</h2>
+<p>Esto cubre la mayor parte de la comunicación entre C y Python a través de funciones, que puede resultar útil si programamos en Python en un estilo parecido a C (con una programación más estructurada).
+La siguiente parte de esta serie estará dedicada a una forma de usar ctypes orientada a objetos (y, consecuentemente, más “pythonica”).</p>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-1">
+<p>Existe, de todos modos, el puntero a void, <code>c_void_p</code>, dentro de ctypes.
+Además podemos crear el puntero a cualquier otro tipo con la función <code>POINTER(type)</code>.</p>
+<a href="#fnref-1" class="footnote-backref">↩</a>
+</li>
+</ol>
+</div></div></div><span style="display:block;clear:both;" data-reactid="9"> </span></div></div><script>
+  
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-109737731-1', 'auto');
+  </script></body></html>
