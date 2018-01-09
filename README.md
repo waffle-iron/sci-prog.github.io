@@ -1,3 +1,4 @@
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/sci-prog/sci-prog.github.io.png?columns=all)](https://waffle.io/sci-prog/sci-prog.github.io?utm_source=badge)
 # gatsby-starter-blog
 Gatsby starter for creating a blog
 
